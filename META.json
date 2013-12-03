@@ -1,0 +1,49 @@
+{
+   "abstract" : "Awk to Perl translator",
+   "author" : [
+      "Leon Timmermans <leont@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 5.006, CPAN::Meta::Converter version 2.132830",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "App-a2p",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.30"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "strict" : "0",
+            "warnings" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "App::a2p" : {
+         "file" : "lib/App/a2p.pm",
+         "version" : "1.000"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "mailto" : "bug-app-a2p at rt.cpan.org",
+         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=App-a2p"
+      },
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/Leont/app-a2p.git",
+         "web" : "https://github.com/Leont/app-a2p"
+      }
+   },
+   "version" : "1.000"
+}
+
