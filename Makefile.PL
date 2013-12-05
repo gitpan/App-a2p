@@ -22,16 +22,24 @@ my %WriteMakefileArgs = (
   "DISTNAME" => "App-a2p",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
+  "MAN1PODS" => {
+    "lib/App/a2p.pm" => "blib/man1/a2p.1"
+  },
+  "MAN3PODS" => {},
   "NAME" => "App::a2p",
   "NEEDS_LINKING" => 1,
   "PREREQ_PM" => {
     "strict" => 0,
     "warnings" => 0
   },
-  "TEST_REQUIRES" => {},
-  "VERSION" => "1.000",
+  "TEST_REQUIRES" => {
+    "File::Spec::Functions" => 0,
+    "IPC::Open2" => 0,
+    "Test::More" => "0.89"
+  },
+  "VERSION" => "1.001",
   "test" => {
-    "TESTS" => ""
+    "TESTS" => "t/*.t"
   }
 );
 
@@ -81,7 +89,7 @@ sub postamble {
 OBJ = hash$(OBJ_EXT) str$(OBJ_EXT) util$(OBJ_EXT) walk$(OBJ_EXT)
 
 $(INST_BIN)/a2p$(EXE_EXT): $(OBJ) a2p$(OBJ_EXT)
-	$(CC) -o $(INST_BIN)/a2p $(LDFLAGS) $(OBJ) a2p$(OBJ_EXT) $(LIB)
+	$(CC) -o $(INST_BIN)/a2p$(EXE_EXT) $(LDFLAGS) $(OBJ) a2p$(OBJ_EXT) $(LIB)
 
 pure_all :: $(INST_BIN)/a2p$(EXE_EXT)
 END
