@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
   "NEEDS_LINKING" => 1,
   "PREREQ_PM" => {},
   "TEST_REQUIRES" => {},
-  "VERSION" => "1.003",
+  "VERSION" => "1.004",
   "test" => {
     "TESTS" => "t/*.t"
   }

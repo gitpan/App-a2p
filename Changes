@@ -1,5 +1,9 @@
 Revision history for App-a2p
 
+1.004     2013-12-15 22:28:29 Europe/Amsterdam
+          Run generated perl code and compare with expected
+          Fix double definition of coeff
+
 1.003     2013-12-13 12:25:56 Europe/Amsterdam
           Fix type in 5.12 compatibility code
 
