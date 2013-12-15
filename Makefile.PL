@@ -28,9 +28,17 @@ my %WriteMakefileArgs = (
   "MAN3PODS" => {},
   "NAME" => "App::a2p",
   "NEEDS_LINKING" => 1,
-  "PREREQ_PM" => {},
-  "TEST_REQUIRES" => {},
-  "VERSION" => "1.004",
+  "PREREQ_PM" => {
+    "strict" => 0,
+    "warnings" => 0
+  },
+  "TEST_REQUIRES" => {
+    "Devel::FindPerl" => 0,
+    "File::Spec::Functions" => 0,
+    "IPC::Open2" => 0,
+    "Test::More" => "0.89"
+  },
+  "VERSION" => "1.005",
   "test" => {
     "TESTS" => "t/*.t"
   }

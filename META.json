@@ -18,12 +18,26 @@
          "requires" : {
             "ExtUtils::MakeMaker" : "6.30"
          }
+      },
+      "runtime" : {
+         "requires" : {
+            "strict" : "0",
+            "warnings" : "0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Devel::FindPerl" : "0",
+            "File::Spec::Functions" : "0",
+            "IPC::Open2" : "0",
+            "Test::More" : "0.89"
+         }
       }
    },
    "provides" : {
       "App::a2p" : {
          "file" : "lib/App/a2p.pm",
-         "version" : "1.004"
+         "version" : "1.005"
       }
    },
    "release_status" : "stable",
@@ -38,6 +52,6 @@
          "web" : "https://github.com/Leont/app-a2p"
       }
    },
-   "version" : "1.004"
+   "version" : "1.005"
 }
 
