@@ -35,10 +35,11 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "Devel::FindPerl" => 0,
     "File::Spec::Functions" => 0,
+    "File::Temp" => 0,
     "IPC::Open2" => 0,
     "Test::More" => "0.89"
   },
-  "VERSION" => "1.005",
+  "VERSION" => "1.006",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -83,16 +84,23 @@ use Config;
 
 sub postamble {
 	my $self = shift;
-	my $ret = $self->SUPER::postamble;
-
-	$ret .= "LIB = $Config{libs}\n";
-	$ret .= <<'END';
-OBJ = hash$(OBJ_EXT) str$(OBJ_EXT) util$(OBJ_EXT) walk$(OBJ_EXT)
-
-$(INST_BIN)/a2p$(EXE_EXT): $(OBJ) a2p$(OBJ_EXT)
-	$(CC) -o $(INST_BIN)/a2p$(EXE_EXT) $(LDFLAGS) $(OBJ) a2p$(OBJ_EXT) $(LIB)
-
-pure_all :: $(INST_BIN)/a2p$(EXE_EXT)
-END
-	return $ret;
+	my @ret = (
+		$self->SUPER::postamble,
+		'OBJ = hash$(OBJ_EXT) str$(OBJ_EXT) util$(OBJ_EXT) walk$(OBJ_EXT) a2p$(OBJ_EXT)',
+		'',
+		'$(INST_BIN)/a2p$(EXE_EXT): $(OBJ)'
+	);
+	if ($^O eq 'MSWin32' && $Config{cc} =~ /^cl/) {
+		push @ret, map { $_ eq '<<' ? $_ : "\t$_" }
+		'$(LD) -subsystem:console -out:$@ @<<',
+		'$(LDFLAGS) $(LDLOADLIBS) $(OBJ)',
+		'<<',
+		'if exist $@.manifest mt -nologo -manifest $@.manifest -outputresource:$@;1',
+		'if exist $@.manifest del $@.manifest';
+	}
+	else {
+		push @ret, "\t" . '$(CC) -o $(INST_BIN)/a2p$(EXE_EXT) $(LDFLAGS) $(OBJ) $(LIBS)';
+	}
+	push @ret, '', 'pure_all :: $(INST_BIN)/a2p$(EXE_EXT)';
+	return join "\n", @ret;
 }

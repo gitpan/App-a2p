@@ -4,7 +4,7 @@
       "Leon Timmermans <leont@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.006, CPAN::Meta::Converter version 2.132830",
+   "generated_by" : "Dist::Zilla version 5.011, CPAN::Meta::Converter version 2.132830",
    "license" : [
       "perl_5"
    ],
@@ -29,6 +29,7 @@
          "requires" : {
             "Devel::FindPerl" : "0",
             "File::Spec::Functions" : "0",
+            "File::Temp" : "0",
             "IPC::Open2" : "0",
             "Test::More" : "0.89"
          }
@@ -37,7 +38,7 @@
    "provides" : {
       "App::a2p" : {
          "file" : "lib/App/a2p.pm",
-         "version" : "1.005"
+         "version" : "1.006"
       }
    },
    "release_status" : "stable",
@@ -52,6 +53,6 @@
          "web" : "https://github.com/Leont/app-a2p"
       }
    },
-   "version" : "1.005"
+   "version" : "1.006"
 }
 
