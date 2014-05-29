@@ -1,5 +1,5 @@
 package App::a2p;
-$App::a2p::VERSION = '1.006';
+$App::a2p::VERSION = '1.007';
 use strict;
 use warnings;
 
